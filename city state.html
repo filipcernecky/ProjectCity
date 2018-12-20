@@ -8,6 +8,10 @@
 	<style>
 	body {
 		background-color: lightgrey;
+	img {
+	
+	}
+
 	}
 	table {
 	background-color:rgb(200, 191, 231);
@@ -49,8 +53,8 @@
   <div id="weather">
     <table>
     <tr>
-        <td>CITY:</td>
-        <td >COUNTRY:</td>
+        <td><strong>CITY:</strong></td>
+        <td><strong>COUNTRY:</strong></td>
 
     </tr>
     <tr>
@@ -62,36 +66,64 @@
 
   <div>
     <table>
+	<tr>
+        <td colspan="2"><div><button class="sendButton" name="Send" onclick="getWeather()">SEND</button></div></td>
+    </tr>
     <tr>
-        <td>Temperature: <img src="Tmp.png" alt="Logo"> </td>
+        <td>
+		<p><strong>Temperature:</strong></p>
+		<p><img src="Temp.png" alt="Temp1.png" style="float:left;width:100px;height:100px;">
+		measure of hotness or coldness expressed in terms of any of several arbitrary scales</p>
+		</td>
         <td id="temp"></td>
     </tr>
     <tr>
-        <td>Humidity:</td>
+        <td>
+		<p><strong>Humidity:</strong></p>
+		<p><img src="Hum.png" alt="Hum1.png" style="float:left;width:100px;height:100px;">
+		the amount of water vapour present in air</p>
+		</td>
         <td id="hum"></td>
     </tr>
     <tr>
-        <td>Population:</td>
+        <td>
+		<p><strong>Population:</strong></p>
+		<p><img src="Pop.png" alt="Pop1.png" style="float:left;width:100px;height:100px;">
+		the number of people living in that city</p>
+		</td>
         <td id="pop"></td>
     </tr>
     <tr>
-        <td>Presure:</td>
+        <td>
+		<p><strong>Presure:</strong></p>
+		<p><img src="Pre.png" alt="Pre1.png" style="float:left;width:100px;height:100px;">
+		Atmospheric pressure and wind are both significant controlling factors of Earth's weather</p>
+		</td>
         <td id="pre"></td>
     </tr>
     <tr>
-        <td>Sea level:</td>
+        <td>
+		<p><strong>Sea level:</strong></p>
+		<p><img src="Slv.png" alt="Slv.png" style="float:left;width:100px;height:100px;">
+		the height of chosen city compared to the average sea level</p>
+		</td>
         <td id="slv"></td>
     </tr>
     <tr>
-        <td>Wind Deg:</td>
-        <td id="tpm"></td>
+        <td>
+		<p><strong>Wind Deg:</strong></p>
+		<p><img src="Wd.png" alt="Wd1.png" style="float:left;width:100px;height:100px;">
+		Wind direction is measured in degrees clockwise from due north</p>
+		</td>
+        <td id="wd"></td>
     </tr>
 	<tr>
-        <td>Wind Speed:</td>
-        <td id="tpn"></td>
-    </tr>
-    <tr>
-        <td colspan="2"><div><button class="sendButton" name="Send" onclick="getWeather()">SEND</button></div></td>
+        <td>
+		<p><strong>Wind Speed:</strong></p>
+		<p><img src="Ws.png" alt="Ws.png" style="float:left;width:100px;height:100px;">
+		fundamental atmospheric quantity caused by air moving from high to low pressure</p>
+		</td>
+        <td id="ws"></td>
     </tr>
     </table>
   </div>
@@ -120,8 +152,8 @@ xhttp.onreadystatechange = function(){
 	document.getElementById("pop").innerHTML = Math.round(obj.city.population);
 	document.getElementById("pre").innerHTML = Math.round(obj.list[1].main.pressure);
 	document.getElementById("slv").innerHTML = Math.round(obj.list[1].main.sea_level);
-	document.getElementById("tpm").innerHTML = Math.round(obj.list[1].wind.deg);
-	document.getElementById("tpn").innerHTML = Math.round(obj.list[1].wind.speed);
+	document.getElementById("wd").innerHTML = Math.round(obj.list[1].wind.deg);
+	document.getElementById("ws").innerHTML = Math.round(obj.list[1].wind.speed);
 	}
 };
 	
