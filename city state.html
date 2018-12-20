@@ -41,6 +41,7 @@
 		padding: 5px;
 	}
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -49,7 +50,7 @@
 	</div>
 	<br>
 
-<body background="emt.jpg">
+<body background="sky.jpg">
   <div id="weather">
     <table>
     <tr>
@@ -72,7 +73,8 @@
     <tr>
         <td>
 		<p><strong>Temperature:</strong></p>
-		<p><img src="Temp.png" alt="Temp1.png" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" 
+		src="Temp.png" alt="Temp" style="float:left;width:100px;height:100px;">
 		measure of hotness or coldness expressed in terms of any of several arbitrary scales</p>
 		</td>
         <td id="temp"></td>
@@ -80,7 +82,8 @@
     <tr>
         <td>
 		<p><strong>Humidity:</strong></p>
-		<p><img src="Hum.png" alt="Hum1.png" style="float:left;width:100px;height:100px;">
+		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
+		src="Hum.png" alt="Hum" style="float:left;width:100px;height:100px;">
 		the amount of water vapour present in air</p>
 		</td>
         <td id="hum"></td>
@@ -88,7 +91,8 @@
     <tr>
         <td>
 		<p><strong>Population:</strong></p>
-		<p><img src="Pop.png" alt="Pop1.png" style="float:left;width:100px;height:100px;">
+		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
+		src="Pop.png" alt="Pop" style="float:left;width:100px;height:100px;">
 		the number of people living in that city</p>
 		</td>
         <td id="pop"></td>
@@ -96,7 +100,8 @@
     <tr>
         <td>
 		<p><strong>Presure:</strong></p>
-		<p><img src="Pre.png" alt="Pre1.png" style="float:left;width:100px;height:100px;">
+		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
+		src="Pre.png" alt="Pre" style="float:left;width:100px;height:100px;">
 		Atmospheric pressure and wind are both significant controlling factors of Earth's weather</p>
 		</td>
         <td id="pre"></td>
@@ -104,7 +109,8 @@
     <tr>
         <td>
 		<p><strong>Sea level:</strong></p>
-		<p><img src="Slv.png" alt="Slv.png" style="float:left;width:100px;height:100px;">
+		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
+		src="Slv.png" alt="Slv" style="float:left;width:100px;height:100px;">
 		the height of chosen city compared to the average sea level</p>
 		</td>
         <td id="slv"></td>
@@ -112,7 +118,8 @@
     <tr>
         <td>
 		<p><strong>Wind Deg:</strong></p>
-		<p><img src="Wd.png" alt="Wd1.png" style="float:left;width:100px;height:100px;">
+		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
+		src="Wd.png" alt="Wd" style="float:left;width:100px;height:100px;">
 		Wind direction is measured in degrees clockwise from due north</p>
 		</td>
         <td id="wd"></td>
@@ -120,7 +127,8 @@
 	<tr>
         <td>
 		<p><strong>Wind Speed:</strong></p>
-		<p><img src="Ws.png" alt="Ws.png" style="float:left;width:100px;height:100px;">
+		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
+		src="Ws.png" alt="Ws" style="float:left;width:100px;height:100px;">
 		fundamental atmospheric quantity caused by air moving from high to low pressure</p>
 		</td>
         <td id="ws"></td>
@@ -159,6 +167,15 @@ xhttp.onreadystatechange = function(){
 	
 xhttp.open("GET", req,true);
 xhttp.send();
+}
+function bigImg(x) {
+  x.style.height = "120px";
+  x.style.width = "120px";
+}
+
+function normalImg(x) {
+  x.style.height = "100px";
+  x.style.width = "100px";
 }
 </script>
 </body>
