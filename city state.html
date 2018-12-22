@@ -46,7 +46,7 @@
 
 <body>
 	<div align="center">
-		<img src="Meteo.png" alt="Logo" width="800" height="300">
+		<img src="Logo.png" alt="Logo" width="800" height="300">
 	</div>
 	<br>
 
@@ -73,8 +73,8 @@
     <tr>
         <td>
 		<p><strong>Temperature:</strong></p>
-		<p><img onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0" 
-		src="Temp.png" alt="Temp" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="this.src='Temp1.png'" onmouseout="this.src='Temp.png'" border="0" 
+		src="Temp.png" alt="Temperature" style="float:left;width:100px;height:100px;">
 		measure of hotness or coldness expressed in terms of any of several arbitrary scales</p>
 		</td>
         <td id="temp"></td>
@@ -82,8 +82,8 @@
     <tr>
         <td>
 		<p><strong>Humidity:</strong></p>
-		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
-		src="Hum.png" alt="Hum" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="this.src='Hum1.png'" onmouseout="this.src='Hum.png'" border="0" 
+		src="Hum.png" alt="Humidity" style="float:left;width:100px;height:100px;">
 		the amount of water vapour present in air</p>
 		</td>
         <td id="hum"></td>
@@ -91,8 +91,8 @@
     <tr>
         <td>
 		<p><strong>Population:</strong></p>
-		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
-		src="Pop.png" alt="Pop" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="this.src='Pop1.png'" onmouseout="this.src='Pop.png'" border="0" 
+		src="Pop.png" alt="Population" style="float:left;width:100px;height:100px;">
 		the number of people living in that city</p>
 		</td>
         <td id="pop"></td>
@@ -100,8 +100,8 @@
     <tr>
         <td>
 		<p><strong>Presure:</strong></p>
-		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
-		src="Pre.png" alt="Pre" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="this.src='Pre1.png'" onmouseout="this.src='Pre.png'" border="0" 
+		src="Pre.png" alt="Presure" style="float:left;width:100px;height:100px;">
 		Atmospheric pressure and wind are both significant controlling factors of Earth's weather</p>
 		</td>
         <td id="pre"></td>
@@ -109,8 +109,8 @@
     <tr>
         <td>
 		<p><strong>Sea level:</strong></p>
-		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
-		src="Slv.png" alt="Slv" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="this.src='Slv1.png'" onmouseout="this.src='Slv.png'" border="0" 
+		src="Slv.png" alt="Sea level" style="float:left;width:100px;height:100px;">
 		the height of chosen city compared to the average sea level</p>
 		</td>
         <td id="slv"></td>
@@ -118,8 +118,8 @@
     <tr>
         <td>
 		<p><strong>Wind Deg:</strong></p>
-		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
-		src="Wd.png" alt="Wd" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="this.src='Wd1.png'" onmouseout="this.src='Wd.png'" border="0" 
+		src="Wd.png" alt="Wind Deg" style="float:left;width:100px;height:100px;">
 		Wind direction is measured in degrees clockwise from due north</p>
 		</td>
         <td id="wd"></td>
@@ -127,8 +127,8 @@
 	<tr>
         <td>
 		<p><strong>Wind Speed:</strong></p>
-		<p><img  onmouseover="bigImg(this)" onmouseout="normalImg(this)" border="0"
-		src="Ws.png" alt="Ws" style="float:left;width:100px;height:100px;">
+		<p><img onmouseover="this.src='Ws1.png'" onmouseout="this.src='Ws.png'" border="0" 
+		src="Ws.png" alt="Wind Speed" style="float:left;width:100px;height:100px;">
 		fundamental atmospheric quantity caused by air moving from high to low pressure</p>
 		</td>
         <td id="ws"></td>
@@ -177,6 +177,9 @@ function normalImg(x) {
   x.style.height = "100px";
   x.style.width = "100px";
 }
+<a href="#" id="name">
+    <img title="Temp" src="Temp.png" onmouseover="this.src='Temp1.png'" onmouseout="this.src='Temp.png'" />
+</a>
 </script>
 </body>
 
