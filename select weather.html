@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<TITLE> MTO </TITLE>
+	<META CHARSET ="UTF-8">
+	<META Name="Keywords" Content="GL">
+	<style>
+	body {
+		background-color: lightgrey;
+	img {
+
+	}
+
+	}
+	table {
+	background-color:rgb(200, 191, 231);
+	width: 60%;
+	table-layout: fixed;
+	margin:auto;
+
+	}
+	table, td, th {
+		border: 1px solid #ddd;
+		text-align: left;
+
+	}
+
+	table {
+		border-collapse: collapse;
+		border: 5px solid black;
+
+	}
+	
+	.result {
+	background-color:rgb(200, 191, 231);
+	width: 40%;
+	table-layout: fixed;
+	margin:auto;
+	}
+	
+	th {
+		text-align: left;
+	}
+	td {
+		height: 40px;
+		padding: 5px;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div align="center">
+		<img src="Logo.png" alt="Logo" width="800" height="300">
+	</div>
+	<br>
+
+<body background="sky.jpg">
+  <div id="weather">
+    <table>
+    <tr>
+		<td><strong>CONTINENT:</strong></td>
+    <td><strong>COUNTRY:</strong></td>
+		<td><strong>CITY:</strong></td>
+
+    </tr>
+    <tr>
+        <td><select id="continent" onchange="onContinentChange()">
+
+		</select></td>
+
+        <td><select id="country" onchange="onCountryChange()">
+
+		</select></td>
+
+		<td><select id="city">
+
+		</select></td>
+    </tr>
+    </table>
+	</div>
+	<br>
+	<div>
+    <table class="result">
+	<tr>
+        <td colspan="2"><div><button class="sendButton" name="Send" onclick="getWeather()">SEND</button></div></td>
+    </tr>
+    <tr>
+        <td>
+		<p><strong>Temperature:</strong></p>
+		<p><img onmouseover="this.src='Temp1.png'" onmouseout="this.src='Temp.png'" border="0"
+		src="Temp.png" alt="Temperature" style="float:left;width:100px;height:100px;">
+		measure of hotness or coldness expressed in terms of any of several arbitrary scales</p>
+		</td>
+        <td id="temp"></td>
+    </tr>
+    <tr>
+        <td>
+		<p><strong>Humidity:</strong></p>
+		<p><img onmouseover="this.src='Hum1.png'" onmouseout="this.src='Hum.png'" border="0"
+		src="Hum.png" alt="Humidity" style="float:left;width:100px;height:100px;">
+		the amount of water vapour present in air</p>
+		</td>
+        <td id="hum"></td>
+    </tr>
+    <tr>
+        <td>
+		<p><strong>Population:</strong></p>
+		<p><img onmouseover="this.src='Pop1.png'" onmouseout="this.src='Pop.png'" border="0"
+		src="Pop.png" alt="Population" style="float:left;width:100px;height:100px;">
+		the number of people living in that city</p>
+		</td>
+        <td id="pop"></td>
+    </tr>
+    <tr>
+        <td>
+		<p><strong>Presure:</strong></p>
+		<p><img onmouseover="this.src='Pre1.png'" onmouseout="this.src='Pre.png'" border="0"
+		src="Pre.png" alt="Presure" style="float:left;width:100px;height:100px;">
+		Atmospheric pressure and wind are both significant controlling factors of Earth's weather</p>
+		</td>
+        <td id="pre"></td>
+    </tr>
+    <tr>
+        <td>
+		<p><strong>Sea level:</strong></p>
+		<p><img onmouseover="this.src='Slv1.png'" onmouseout="this.src='Slv.png'" border="0"
+		src="Slv.png" alt="Sea level" style="float:left;width:100px;height:100px;">
+		the height of chosen city compared to the average sea level</p>
+		</td>
+        <td id="slv"></td>
+    </tr>
+    <tr>
+        <td>
+		<p><strong>Wind Deg:</strong></p>
+		<p><img onmouseover="this.src='Wd1.png'" onmouseout="this.src='Wd.png'" border="0"
+		src="Wd.png" alt="Wind Deg" style="float:left;width:100px;height:100px;">
+		Wind direction is measured in degrees clockwise from due north</p>
+		</td>
+        <td id="wd"></td>
+    </tr>
+	<tr>
+        <td>
+		<p><strong>Wind Speed:</strong></p>
+		<p><img onmouseover="this.src='Ws1.png'" onmouseout="this.src='Ws.png'" border="0"
+		src="Ws.png" alt="Wind Speed" style="float:left;width:100px;height:100px;">
+		fundamental atmospheric quantity caused by air moving from high to low pressure</p>
+		</td>
+        <td id="ws"></td>
+    </tr>
+    </table>
+	</div>
+
+</div>
+
+<script>
+var countries = [];
+
+window.onload=function() {
+	$.ajax({
+		url:"http://itsovy.sk:1200/continents",
+	  method:"GET",
+		success:function(data){
+			data = JSON.parse(data);
+			$("#continent").empty();
+			data.forEach((element) => {
+				var option = $("<option>");
+				option.attr({value:element.continent});
+				option.text(element.continent);
+				$("#continent").append(option);
+			});
+			onContinentChange();
+		}
+	});
+}
+
+function onContinentChange() {
+	$.ajax({
+		url:"http://itsovy.sk:1200/countries?continent="+$("#continent").val(),
+	  method:"GET",
+		success:function(data){
+			countries = data;
+			$("#country").empty();
+			data.forEach((element) => {
+				var option = $("<option>");
+				option.attr({value:element.name});
+				option.text(element.name);
+				$("#country").append(option);
+			});
+			onCountryChange();
+		}
+	});
+}
+
+function onCountryChange(){
+	$.ajax({
+		url:"http://itsovy.sk:1200/cities?country="+$("#country").val(),
+		method:"GET",
+		success:function(data){
+			$("#city").empty();
+			data.forEach((element) => {
+				var option = $("<option>");
+				option.attr({value:element.name});
+				option.text(element.name);
+				$("#city").append(option);
+			});
+		}
+	});
+}
+
+function getWeather() {
+let country = document.getElementById('country').value;
+let city = document.getElementById('city').value;
+let code = "";
+let appid="88db404e65c27397d0ad0c6fb6f383a9";
+
+countries.forEach(element=>{
+	if(element.name === country){
+		code = element.code;
+	}
+});
+
+$.ajax({
+	  url:"http://api.openweathermap.org/data/2.5/forecast?q="+city+","+code+"&APPID="+appid,
+		method:"GET",
+		success:function(obj){
+			document.getElementById("temp").innerHTML =
+				Math.round((obj.list[0].main.temp-273.15)*100)/100;
+			document.getElementById("hum").innerHTML = Math.round(obj.list[1].main.humidity);
+			document.getElementById("pop").innerHTML = Math.round(obj.city.population);
+			document.getElementById("pre").innerHTML = Math.round(obj.list[1].main.pressure);
+			document.getElementById("slv").innerHTML = Math.round(obj.list[1].main.sea_level);
+			document.getElementById("wd").innerHTML = Math.round(obj.list[1].wind.deg);
+			document.getElementById("ws").innerHTML = Math.round(obj.list[1].wind.speed);
+		}
+});
+
+}
+function bigImg(x) {
+  x.style.height = "120px";
+  x.style.width = "120px";
+}
+
+function normalImg(x) {
+  x.style.height = "100px";
+  x.style.width = "100px";
+}
+</script>
+</body>
+
+</html>
+
